@@ -1,0 +1,1 @@
+typeSearchIndex = [{"p":"example.adivina_el_codigo","l":"AdivinaElCodigo"},{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"example.adivina_el_codigo","l":"GameLogic.Feedback"},{"p":"example.adivina_el_codigo","l":"GameController"},{"p":"example.adivina_el_codigo","l":"GameLogic"},{"p":"example.adivina_el_codigo","l":"LoginController"}];updateSearchResults();
