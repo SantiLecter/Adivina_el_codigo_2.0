@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<!-- Contenedor principal de tipo VBox, alineado al centro y con espacio entre elementos -->
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="example.adivina_el_codigo.LoginController" spacing="20" alignment="CENTER">
+
+    <!-- Título del juego -->
+    <Text text="Adivina el código" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+
+    <!-- Botón para iniciar un nuevo juego -->
+    <Button fx:id="newGameButton" text="Nuevo Juego" onAction="#startNewGame" style="-fx-font-size: 16px;" />
+
+</VBox>
