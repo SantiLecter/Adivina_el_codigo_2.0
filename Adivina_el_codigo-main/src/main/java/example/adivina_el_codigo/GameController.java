@@ -1,17 +1,17 @@
 package example.adivina_el_codigo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.layout.GridPane;
-import javafx.scene.effect.DropShadow;
 import javafx.scene.text.Font;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class GameController {
 
@@ -49,7 +49,7 @@ public class GameController {
     private GridPane attemptsGrid;
 
     @FXML
-    private GridPane feedbackGrid;
+    protected GridPane feedbackGrid;
 
     @FXML
     private Label attemptsLeftLabel;
@@ -99,7 +99,8 @@ public class GameController {
     private void initializeFeedbackGrid() {
         for (int row = 0; row < 10; row++) {
             for (int col = 0; col < 2; col++) {
-                Rectangle rectangle = new Rectangle(27.9, 27.9);  // Tamaño de los cuadrados de retroalimentación, 7% más pequeños que los círculos
+                Rectangle rectangle = new Rectangle(27.9, 27.9); // Tamaño de los cuadrados de retroalimentación, 7% más
+                                                                 // pequeños que los círculos
                 rectangle.setFill(Color.TRANSPARENT);
                 rectangle.setStroke(Color.BLACK);
                 rectangle.setStrokeWidth(1.5);
@@ -137,7 +138,8 @@ public class GameController {
     }
 
     /**
-     * Actualiza los círculos de colores seleccionados en función de la suposición actual.
+     * Actualiza los círculos de colores seleccionados en función de la suposición
+     * actual.
      */
     private void updateSelectedColors() {
         if (currentGuess.size() > 0) {
@@ -237,7 +239,9 @@ public class GameController {
         if (correctPositionRect != null) {
             correctPositionRect.setFill(Color.LIGHTGREEN);
             Label correctPositionLabel = new Label(String.valueOf(correctPositions));
-            correctPositionLabel.setFont(new Font(correctPositionLabel.getFont().getSize() * 1.15)); // Aumenta el tamaño de la fuente en un 15%
+            correctPositionLabel.setFont(new Font(correctPositionLabel.getFont().getSize() * 1.15)); // Aumenta el
+                                                                                                     // tamaño de la
+                                                                                                     // fuente en un 15%
             correctPositionLabel.setTranslateX(5); // Mueve la etiqueta ligeramente a la derecha
             feedbackGrid.add(correctPositionLabel, 0, rowIndex);
         }
@@ -247,7 +251,8 @@ public class GameController {
         if (correctColorRect != null) {
             correctColorRect.setFill(Color.ORANGE);
             Label correctColorLabel = new Label(String.valueOf(correctColors));
-            correctColorLabel.setFont(new Font(correctColorLabel.getFont().getSize() * 1.15)); // Aumenta el tamaño de la fuente en un 15%
+            correctColorLabel.setFont(new Font(correctColorLabel.getFont().getSize() * 1.15)); // Aumenta el tamaño de
+                                                                                               // la fuente en un 15%
             correctColorLabel.setTranslateX(5); // Mueve la etiqueta ligeramente a la derecha
             feedbackGrid.add(correctColorLabel, 1, rowIndex);
         }
@@ -256,10 +261,11 @@ public class GameController {
     /**
      * Obtiene el nodo por el índice de fila y columna de la cuadrícula.
      *
-     * @param row       el índice de la fila
-     * @param column    el índice de la columna
-     * @param gridPane  la cuadrícula
-     * @return el nodo en el índice de fila y columna especificado, o null si no se encuentra ningún nodo en esa posición
+     * @param row      el índice de la fila
+     * @param column   el índice de la columna
+     * @param gridPane la cuadrícula
+     * @return el nodo en el índice de fila y columna especificado, o null si no se
+     *         encuentra ningún nodo en esa posición
      */
     private javafx.scene.Node getNodeByRowColumnIndex(final int row, final int column, GridPane gridPane) {
         for (javafx.scene.Node node : gridPane.getChildren()) {
@@ -283,4 +289,58 @@ public class GameController {
         selectedColor4.setFill(Color.LIGHTGREY);
         feedbackLabel.setText("");
     }
+
+    // Setter method for feedbackGrid
+    public void setFeedbackGrid(GridPane feedbackGrid) {
+        this.feedbackGrid = feedbackGrid;
+    }
+
+    public void setAttemptsGrid(GridPane attemptsGrid) {
+        this.attemptsGrid = attemptsGrid;
+    }
+
+    public void setAttemptsLeftLabel(Label attemptsLeftLabel) {
+        this.attemptsLeftLabel = attemptsLeftLabel;
+    }
+
+    public void setSelectedColor1(Circle selectedColor1) {
+        this.selectedColor1 = selectedColor1;
+    }
+
+    public void setSelectedColor2(Circle selectedColor2) {
+        this.selectedColor2 = selectedColor2;
+    }
+
+    public void setSelectedColor3(Circle selectedColor3) {
+        this.selectedColor3 = selectedColor3;
+    }
+
+    public void setSelectedColor4(Circle selectedColor4) {
+        this.selectedColor4 = selectedColor4;
+    }
+
+    public void setColorRed(Circle colorRed) {
+        this.colorRed = colorRed;
+    }
+
+    public void setColorGreen(Circle colorGreen) {
+        this.colorGreen = colorGreen;
+    }
+
+    public void setColorBlue(Circle colorBlue) {
+        this.colorBlue = colorBlue;
+    }
+
+    public void setColorYellow(Circle colorYellow) {
+        this.colorYellow = colorYellow;
+    }
+
+    public void setFeedbackLabel(Label feedbackLabel) {
+        this.feedbackLabel = feedbackLabel;
+    }
+
+    public void setGameStatusLabel(Label gameStatusLabel) {
+        this.gameStatusLabel = gameStatusLabel;
+    }
+
 }

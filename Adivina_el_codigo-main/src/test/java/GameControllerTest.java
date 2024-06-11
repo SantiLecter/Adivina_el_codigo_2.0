@@ -1,3 +1,5 @@
+package example.adivina_el_codigo;
+
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -13,6 +15,9 @@ import org.junit.jupiter.api.Test;
 import org.testfx.framework.junit5.ApplicationTest;
 import static org.junit.jupiter.api.Assertions.*;
 
+import example.adivina_el_codigo.GameLogic;
+import example.adivina_el_codigo.GameController;
+
 import java.util.List;
 import java.util.Arrays;
 
@@ -23,19 +28,19 @@ public class GameControllerTest extends ApplicationTest {
     @BeforeEach
     public void setUp() throws Exception {
         gameController = new GameController();
-        gameController.feedbackGrid = new GridPane();
-        gameController.attemptsGrid = new GridPane();
-        gameController.attemptsLeftLabel = new Label();
-        gameController.selectedColor1 = new Circle();
-        gameController.selectedColor2 = new Circle();
-        gameController.selectedColor3 = new Circle();
-        gameController.selectedColor4 = new Circle();
-        gameController.colorRed = new Circle();
-        gameController.colorGreen = new Circle();
-        gameController.colorBlue = new Circle();
-        gameController.colorYellow = new Circle();
-        gameController.feedbackLabel = new Label();
-        gameController.gameStatusLabel = new Label();
+        gameController.setFeedbackGrid(new GridPane());
+        gameController.setAttemptsGrid(new GridPane());
+        gameController.setAttemptsLeftLabel(new Label());
+        gameController.setSelectedColor1(new Circle());
+        gameController.setSelectedColor2(new Circle());
+        gameController.setSelectedColor3(new Circle());
+        gameController.setSelectedColor4(new Circle());
+        gameController.setColorRed(new Circle());
+        gameController.setColorGreen(new Circle());
+        gameController.setColorBlue(new Circle());
+        gameController.setColorYellow(new Circle());
+        gameController.setFeedbackLabel(new Label());
+        gameController.setGameStatusLabel(new Label());
         gameController.initialize();
     }
 
@@ -44,15 +49,16 @@ public class GameControllerTest extends ApplicationTest {
         GameLogic gameLogic = new GameLogic();
         List<String> code = gameLogic.getCode();
 
-        // Se evalúa que el código no sea nulo y tenga la longitud correcta (4 en este caso)
+        // Se evalúa que el código no sea nulo y tenga la longitud correcta (4 en este
+        // caso)
         assertEquals(4, code.size());
 
-        // Evaluamos que cada elemento en el código tenga un color válido en la lista de colores
+        // Evaluamos que cada elemento en el código tenga un color válido en la lista de
+        // colores
         for (String color : code) {
-            assertTrue(Arrays.asList(gameLogic.colors).contains(color));
+            assertTrue(Arrays.asList(gameLogic.getColors()).contains(color));
         }
     }
-
 
     @Test
     public void testInitializeFeedbackGrid() {
@@ -78,7 +84,7 @@ public class GameControllerTest extends ApplicationTest {
     @Test
     public void testSelectColorUpdatesSelectedCircle() {
         // Simula la selección de un color
-        gameController.selectColor(createMouseEvent(gameController.colorRed));
+        gameController.selectColor(createMouseEvent(gameController.getColorRed));
         assertEquals(Color.RED, gameController.selectedColor1.getFill());
 
         gameController.selectColor(createMouseEvent(gameController.colorGreen));
@@ -162,7 +168,8 @@ public class GameControllerTest extends ApplicationTest {
         // Envía la suposición
         gameController.submitGuess();
 
-        // Verifica que la retroalimentación se haya añadido a la cuadrícula de retroalimentación
+        // Verifica que la retroalimentación se haya añadido a la cuadrícula de
+        // retroalimentación
         Rectangle rect = (Rectangle) getNodeByRowColumnIndex(0, 0, gameController.feedbackGrid);
         assertEquals(Color.LIGHTGREEN, rect.getFill());
     }
@@ -224,7 +231,7 @@ public class GameControllerTest extends ApplicationTest {
         gameController.gameLogic = new GameLogic() {
             @Override
             public Feedback checkGuess(List<String> guess) {
-                return new Feedback(1, 0);  // Simula 1 posición correcta
+                return new Feedback(1, 0); // Simula 1 posición correcta
             }
         };
 
