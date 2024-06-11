@@ -6,7 +6,7 @@ import java.util.Random;
 
 public class GameLogic {
 
-    private final String[] colors = {"Red", "Green", "Blue", "Yellow"};
+    private final String[] colors = { "Red", "Green", "Blue", "Yellow" };
     private final List<String> code;
     private int attempts;
 
@@ -51,12 +51,18 @@ public class GameLogic {
         return attempts;
     }
 
+    public String[] getColors() {
+        return colors;
+    }
+
     /**
      * Verifica la suposición del usuario comparándola con el código generado.
-     * Incrementa el número de intentos y devuelve un objeto Feedback con la información de la verificación.
+     * Incrementa el número de intentos y devuelve un objeto Feedback con la
+     * información de la verificación.
      *
      * @param guess la suposición del usuario.
-     * @return un objeto Feedback con la cantidad de posiciones correctas y colores correctos en posiciones incorrectas.
+     * @return un objeto Feedback con la cantidad de posiciones correctas y colores
+     *         correctos en posiciones incorrectas.
      */
     public Feedback checkGuess(List<String> guess) {
         attempts++;
@@ -87,7 +93,8 @@ public class GameLogic {
     }
 
     /**
-     * Clase interna para representar la retroalimentación de la verificación de la suposición.
+     * Clase interna para representar la retroalimentación de la verificación de la
+     * suposición.
      */
     public static class Feedback {
         private final int correctPosition;
@@ -97,7 +104,8 @@ public class GameLogic {
          * Constructor del objeto Feedback.
          *
          * @param correctPosition la cantidad de posiciones correctas.
-         * @param correctColor la cantidad de colores correctos en posiciones incorrectas.
+         * @param correctColor    la cantidad de colores correctos en posiciones
+         *                        incorrectas.
          */
         public Feedback(int correctPosition, int correctColor) {
             this.correctPosition = correctPosition;
@@ -121,5 +129,6 @@ public class GameLogic {
         public int getCorrectColor() {
             return correctColor;
         }
+
     }
 }

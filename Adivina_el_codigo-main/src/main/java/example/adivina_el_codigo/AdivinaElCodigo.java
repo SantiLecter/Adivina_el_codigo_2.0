@@ -8,7 +8,8 @@ import javafx.stage.Stage;
 
 public class AdivinaElCodigo extends Application {
 
-    @Override
+    @SuppressWarnings("exports")
+	@Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
         primaryStage.setTitle("Adivina el codigo");
