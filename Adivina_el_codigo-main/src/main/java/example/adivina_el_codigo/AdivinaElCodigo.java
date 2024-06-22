@@ -12,7 +12,9 @@ public class AdivinaElCodigo extends Application {
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/example/adivina_el_codigo/login.fxml"));
         primaryStage.setTitle("Adivina el codigo");
-        primaryStage.setScene(new Scene(root, 400, 300));
+        Scene scene = new Scene(root, 400, 300);
+        scene.getStylesheets().add(getClass().getResource("/example/adivina_el_codigo/styles/style.css").toExternalForm());
+        primaryStage.setScene(scene);
         primaryStage.show();
     }
 

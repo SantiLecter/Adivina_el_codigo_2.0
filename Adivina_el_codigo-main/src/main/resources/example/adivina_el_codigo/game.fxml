@@ -14,10 +14,10 @@
 <?import javafx.scene.shape.Rectangle?>
 
 <!-- Contenedor principal de tipo VBox, alineado al centro y con espacio entre elementos -->
-<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="example.adivina_el_codigo.GameController" spacing="15" alignment="CENTER">
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="example.adivina_el_codigo.GameController" spacing="15" alignment="CENTER" styleClass="vbox-background">
 
     <!-- Etiqueta para mostrar el estado del juego -->
-    <Label fx:id="gameStatusLabel" text="Estado del Juego" style="-fx-font-size: 18px;" />
+    <Label fx:id="gameStatusLabel" text="Estado del Juego" styleClass="label-style" />
 
     <HBox spacing="15" alignment="CENTER">
         <!-- GridPane para mostrar la retroalimentación -->
@@ -37,40 +37,26 @@
     <VBox alignment="CENTER" spacing="15">
         <!-- Círculos de colores seleccionados, centrados -->
         <HBox spacing="15" alignment="CENTER">
-            <Circle fx:id="selectedColor1" radius="30" style="-fx-fill: lightgrey;" stroke="black" strokeWidth="2">
-                <effect>
-                    <DropShadow radius="7.5" offsetX="4.5" offsetY="4.5" color="rgba(0,0,0,0.5)" />
-                </effect>
-            </Circle>
-            <Circle fx:id="selectedColor2" radius="30" style="-fx-fill: lightgrey;" stroke="black" strokeWidth="2">
-                <effect>
-                    <DropShadow radius="7.5" offsetX="4.5" offsetY="4.5" color="rgba(0,0,0,0.5)" />
-                </effect>
-            </Circle>
-            <Circle fx:id="selectedColor3" radius="30" style="-fx-fill: lightgrey;" stroke="black" strokeWidth="2">
-                <effect>
-                    <DropShadow radius="7.5" offsetX="4.5" offsetY="4.5" color="rgba(0,0,0,0.5)" />
-                </effect>
-            </Circle>
-            <Circle fx:id="selectedColor4" radius="30" style="-fx-fill: lightgrey;" stroke="black" strokeWidth="2">
-                <effect>
-                    <DropShadow radius="7.5" offsetX="4.5" offsetY="4.5" color="rgba(0,0,0,0.5)" />
-                </effect>
-            </Circle>
+            <Circle fx:id="selectedColor1" radius="30" styleClass="circle-style"/>
+            <Circle fx:id="selectedColor2" radius="30" styleClass="circle-style"/>
+            <Circle fx:id="selectedColor3" radius="30" styleClass="circle-style"/>
+            <Circle fx:id="selectedColor4" radius="30" styleClass="circle-style"/>
         </HBox>
 
-        <HBox spacing="15" alignment="CENTER">
+        <HBox fx:id="buttonContainer" spacing="15" alignment="CENTER">
             <!-- Botón para enviar la suposición -->
-            <Button fx:id="submitGuessButton" text="Enviar intento" onAction="#submitGuess" style="-fx-font-size: 14px;" />
+            <Button fx:id="submitGuessButton" text="Enviar intento" styleClass="button-send" onAction="#submitGuess" />
             <!-- Botón para limpiar la selección -->
-            <Button fx:id="clearButton" text="Limpiar Selección" onAction="#clearSelection" style="-fx-font-size: 14px;" />
+            <Button fx:id="clearButton" text="Limpiar Selección" styleClass="button-clean" onAction="#clearSelection" />
+            <!-- Botón para enviar el código (solo visible durante la fase de configuración del código) -->
+            <Button fx:id="submitCodeButton" text="Enviar Código" styleClass="button-new-code" visible="false" />
         </HBox>
 
         <!-- Etiqueta para mostrar retroalimentación -->
-        <Label fx:id="feedbackLabel" text="Retroalimentación" style="-fx-font-size: 18px;" />
+        <Label fx:id="feedbackLabel" text="Retroalimentación" styleClass="label-style" />
 
         <!-- Área de selección de colores -->
-        <StackPane alignment="CENTER">
+        <StackPane alignment="CENTER" styleClass="stackpane-background">
             <Rectangle width="300" height="75" style="-fx-fill: darkblue;" arcWidth="15" arcHeight="15"/>
             <HBox spacing="15" alignment="CENTER">
                 <Circle fx:id="colorRed" radius="15" style="-fx-fill: red;" onMouseClicked="#selectColor" />
@@ -82,5 +68,11 @@
     </VBox>
 
     <!-- Etiqueta para mostrar los intentos restantes -->
-    <Label fx:id="attemptsLeftLabel" text="Intentos restantes: 10" style="-fx-font-size: 18px;" />
+    <Label fx:id="attemptsLeftLabel" text="Intentos restantes: 10" styleClass="label-style" />
+
+    <!-- Etiqueta para mostrar el estado de configuración del código -->
+    <Label fx:id="codeSettingLabel" text="Jugador 2: Establezca el código" styleClass="label-style" visible="false" />
+    
+    <!-- Botón para cerrar la aplicación -->
+    <Button fx:id="closeButton" text="Cerrar" onAction="#closeApp" styleClass="button-close" />
 </VBox>

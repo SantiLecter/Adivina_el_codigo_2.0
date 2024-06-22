@@ -14,7 +14,7 @@
 <?import javafx.scene.shape.Rectangle?>
 
 <!-- Contenedor principal de tipo VBox, alineado al centro y con espacio entre elementos -->
-<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="example.adivina_el_codigo.TwoPlayerGameController" spacing="15" alignment="CENTER">
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="example.adivina_el_codigo.TwoPlayerGameController" spacing="15" alignment="CENTER" styleClass="vbox-background">
 
     <!-- Etiqueta para mostrar el estado del juego -->
     <Label fx:id="gameStatusLabel" text="Estado del Juego" style="-fx-font-size: 18px;" />
@@ -59,13 +59,13 @@
             </Circle>
         </HBox>
 
-        <HBox fx:id="buttonContainer" spacing="15" alignment="CENTER">
+		<HBox fx:id="buttonContainer" spacing="15" alignment="CENTER">
             <!-- Botón para enviar la suposición -->
-            <Button fx:id="submitGuessButton" text="Enviar intento" onAction="#submitGuess" style="-fx-font-size: 14px;" />
+            <Button fx:id="submitGuessButton" text="Enviar intento" styleClass="button-send" onAction="#submitGuess" />
             <!-- Botón para limpiar la selección -->
-            <Button fx:id="clearButton" text="Limpiar Selección" onAction="#clearSelection" style="-fx-font-size: 14px;" />
+            <Button fx:id="clearButton" text="Limpiar Selección" styleClass="button-clean" onAction="#clearSelection" />
             <!-- Botón para enviar el código (solo visible durante la fase de configuración del código) -->
-            <Button fx:id="submitCodeButton" text="Enviar Código" onAction="#submitCode" style="-fx-font-size: 14px;" visible="false" />
+            <Button fx:id="submitCodeButton" text="Enviar Código" onAction="#submitCode" styleClass="button-new-code" visible="false" />
         </HBox>
 
         <!-- Etiqueta para mostrar retroalimentación -->
@@ -88,4 +88,7 @@
 
     <!-- Etiqueta para mostrar el estado de configuración del código -->
     <Label fx:id="codeSettingLabel" text="Jugador 2: Establezca el código" style="-fx-font-size: 18px;" visible="false" />
+    
+    <!-- Botón para cerrar la aplicación -->
+    <Button fx:id="closeButton" text="Cerrar" onAction="#closeApp" styleClass="button-close" />
 </VBox>

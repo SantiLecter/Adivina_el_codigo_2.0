@@ -3,7 +3,9 @@ package example.adivina_el_codigo;
 import java.util.ArrayList;
 import java.util.List;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.input.MouseEvent;
@@ -57,14 +59,18 @@ public class GameController {
     private List<String> currentGuess;
     private int currentSelectionIndex;
 
-    private boolean isTwoPlayerMode;
+    @SuppressWarnings("unused")
+	private boolean isTwoPlayerMode;
+    
+    @FXML
+    private Button closeButton;
 
-    /**
-     * Inicializa el controlador del juego.
-     */
-    public void initialize() {
-        gameLogic = new GameLogic();
-        gameStatusLabel.setText("Bienvenido! Empieza a adivinar el codigo.");
+        /**
+         * Inicializa el controlador del juego.
+         */
+        public void initialize() {
+            gameLogic = new GameLogic();
+            gameStatusLabel.setText("Bienvenido! Empieza a adivinar el codigo.");
         currentGuess = new ArrayList<>();
         currentSelectionIndex = 0;
 
@@ -354,6 +360,16 @@ public class GameController {
 
     public void setGameStatusLabel(Label gameStatusLabel) {
         this.gameStatusLabel = gameStatusLabel;
+    }
+
+    
+
+    /**
+     * Maneja el evento de cerrar el juego. 
+     */
+    @FXML
+    private void closeApp() {
+        Platform.exit();
     }
 
 }

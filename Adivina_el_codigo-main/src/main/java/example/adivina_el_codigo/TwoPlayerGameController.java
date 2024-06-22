@@ -3,6 +3,7 @@ package example.adivina_el_codigo;
 import java.util.ArrayList;
 import java.util.List;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -78,7 +79,10 @@ public class TwoPlayerGameController {
     private boolean isCodeSettingPhase;
 
     @FXML
-    private HBox buttonContainer; // HBox to contain the buttons
+    private HBox buttonContainer;
+    
+    @FXML
+    private Button closeButton;
 
 
     /**
@@ -93,7 +97,7 @@ public class TwoPlayerGameController {
         isTwoPlayerMode = true;
         isCodeSettingPhase = true;
 
-        buttonContainer.setAlignment(Pos.CENTER); // Center align the buttons initially
+        buttonContainer.setAlignment(Pos.CENTER); // Alinear los botones al centro
 
         initializeAttemptsGrid();
         initializeFeedbackGrid();
@@ -118,7 +122,7 @@ public class TwoPlayerGameController {
 
         clearSelection();
 
-        // Center align the buttons after the code is submitted
+        // Alinear los botones al centro después de que se envió el código
         buttonContainer.setAlignment(Pos.CENTER);
     }
 
@@ -227,7 +231,7 @@ public class TwoPlayerGameController {
      */
     @FXML
     private void submitGuess() {
-        if (isCodeSettingPhase) {
+    	if (isCodeSettingPhase) {
             feedbackLabel.setText("Jugador 2 está estableciendo el código.");
             return;
         }
@@ -238,7 +242,6 @@ public class TwoPlayerGameController {
         }
 
         GameLogic.Feedback feedback = gameLogic.checkGuess(currentGuess);
-
         addGuessToGrid(currentGuess, gameLogic.getAttempts() - 1);
         addFeedbackToGrid(feedback, gameLogic.getAttempts() - 1);
 
@@ -289,9 +292,7 @@ public class TwoPlayerGameController {
         if (correctPositionRect != null) {
             correctPositionRect.setFill(Color.LIGHTGREEN);
             Label correctPositionLabel = new Label(String.valueOf(correctPositions));
-            correctPositionLabel.setFont(new Font(correctPositionLabel.getFont().getSize() * 1.15)); // Aumenta el
-            // tamaño de la
-            // fuente en un 15%
+            correctPositionLabel.setFont(new Font(correctPositionLabel.getFont().getSize() * 1.15)); // Aumenta el tamaño de la fuente en un 15%
             correctPositionLabel.setTranslateX(5); // Mueve la etiqueta ligeramente a la derecha
             feedbackGrid.add(correctPositionLabel, 0, rowIndex);
         }
@@ -300,9 +301,8 @@ public class TwoPlayerGameController {
         Rectangle correctColorRect = (Rectangle) getNodeByRowColumnIndex(rowIndex, 1, feedbackGrid);
         if (correctColorRect != null) {
             correctColorRect.setFill(Color.ORANGE);
-            Label  correctColorLabel = new Label(String.valueOf(correctColors));
-            correctColorLabel.setFont(new Font(correctColorLabel.getFont().getSize() * 1.15)); // Aumenta el tamaño de
-            // la fuente en un 15%
+            Label correctColorLabel = new Label(String.valueOf(correctColors));
+            correctColorLabel.setFont(new Font(correctColorLabel.getFont().getSize() * 1.15)); // Aumenta el tamaño de la fuente en un 15%
             correctColorLabel.setTranslateX(5); // Mueve la etiqueta ligeramente a la derecha
             feedbackGrid.add(correctColorLabel, 1, rowIndex);
         }
@@ -319,7 +319,9 @@ public class TwoPlayerGameController {
      */
     private javafx.scene.Node getNodeByRowColumnIndex(final int row, final int column, GridPane gridPane) {
         for (javafx.scene.Node node : gridPane.getChildren()) {
-            if (GridPane.getRowIndex(node) == row && GridPane.getColumnIndex(node) == column) {
+            if (GridPane.getRowIndex(node) == null) continue;
+            if (GridPane.getColumnIndex(node) == null) continue;
+            if (GridPane.getRowIndex(node) == row && GridPane.getColumnIndex(node) == column) {;
                 return node;
             }
         }
@@ -339,8 +341,8 @@ public class TwoPlayerGameController {
         selectedColor4.setFill(Color.LIGHTGREY);
         feedbackLabel.setText("");
     }
-
-    // Setter methods to inject FXML components
+    
+ // Setter methods to inject FXML components
     public void setFeedbackGrid(GridPane feedbackGrid) {
         this.feedbackGrid = feedbackGrid;
     }
@@ -391,5 +393,13 @@ public class TwoPlayerGameController {
 
     public void setGameStatusLabel(Label gameStatusLabel) {
         this.gameStatusLabel = gameStatusLabel;
+    }
+    
+    /**
+     * Maneja el evento de cerrar el juego. 
+     */
+    @FXML
+    private void closeApp() {
+        Platform.exit();
     }
 }
