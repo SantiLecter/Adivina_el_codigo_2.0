@@ -40,6 +40,7 @@ public class GameLogic {
      */
     public void setCodeToGuess(List<String> code) {
         this.code = new ArrayList<>(code);
+        this.attempts = 0;
     }
 
     /**

@@ -1,0 +1,131 @@
+/* styles.css */
+
+.login-pane {
+    -fx-background-image: url('../images/fondo.png');
+    -fx-background-size: cover;
+    -fx-background-position: center;
+}
+
+.vbox {
+    -fx-alignment: center;
+}
+
+.text-title {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+}
+
+.button-twoplayer {
+    -fx-font-size: 14px;
+    -fx-padding: 10px 20px;
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-background-radius: 5;
+    -fx-alignment: center;
+    -fx-content-display: left; /* Para colocar la imagen a la izquierda del texto */
+}
+
+.button-twoplayer:hover {
+    -fx-background-color: #45a049;
+}
+
+.button-oneplayer {
+    -fx-font-size: 14px;
+    -fx-padding: 10px 20px;
+    -fx-background-color: #FF8000;
+    -fx-text-fill: white;
+    -fx-background-radius: 5;
+    -fx-alignment: center;
+    -fx-content-display: left; /* Para colocar la imagen a la izquierda del texto */
+}
+
+.button-oneplayer:hover {
+    -fx-background-color: #b86e14;
+}
+
+.button-close {
+    -fx-font-size: 14px;
+    -fx-padding: 10px 20px;
+    -fx-background-color: #642424;
+    -fx-text-fill: white;
+    -fx-background-radius: 5;
+    -fx-alignment: center;
+}
+
+.button-close:hover {
+    -fx-background-color: #633a34;
+}
+
+.button-send {
+    -fx-font-size: 14px;
+    -fx-padding: 10px 20px;
+    -fx-background-color: #00913f;
+    -fx-text-fill: white;
+    -fx-background-radius: 5;
+    -fx-alignment: center;
+}
+
+.button-send:hover {
+    -fx-background-color: #4c9141;
+}
+
+.button-clean {
+    -fx-font-size: 14px;
+    -fx-padding: 10px 20px;
+    -fx-background-color: #6c7059;
+    -fx-text-fill: white;
+    -fx-background-radius: 5;
+    -fx-alignment: center;
+}
+
+.button-clean:hover {
+    -fx-background-color: #82a1b1;
+}
+
+.button-new-code {
+    -fx-font-size: 14px;
+    -fx-padding: 10px 20px;
+    -fx-background-color: #60a1ed;
+    -fx-text-fill: white;
+    -fx-background-radius: 5;
+    -fx-alignment: center;
+}
+
+.button-new-code:hover {
+    -fx-background-color: #87cefa;
+}
+
+
+.button .image-view {
+    -fx-fit-width: 20px;
+    -fx-fit-height: 20px;
+    -fx-margin-right: 10px; /* Espacio entre la imagen y el texto */
+}
+
+.hbox {
+    -fx-spacing: 20px;
+    -fx-alignment: center;
+}
+
+/* Fondo del VBox */
+.vbox-background {
+    -fx-background-color: lightblue;
+}
+
+.label-style {
+    -fx-font-size: 18px;
+}
+
+.button-style {
+    -fx-font-size: 14px;
+}
+
+.circle-style {
+    -fx-fill: lightgrey;
+    -fx-stroke: black;
+    -fx-stroke-width: 2;
+}
+
+.circle-effect {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 7.5, 0.5, 4.5, 4.5);
+}
